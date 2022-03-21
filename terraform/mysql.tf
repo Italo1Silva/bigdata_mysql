@@ -7,7 +7,7 @@ resource "ibm_database" "mysqldb" {
   tags                                 = []
   adminpassword = var.mysql_password
   members_memory_allocation_mb = 122880
-  members_disk_allocation_mb   = 614400
+  members_disk_allocation_mb   = 61440
   timeouts {
     create = "120m"
     update = "120m"
