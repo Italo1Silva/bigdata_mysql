@@ -30,6 +30,18 @@ cat template.txt | datamaker -i 350000000 > batch.txt
 echo "Create the auth token to access mysql"
 echo auth admin <mysql_password_from_terraform_tf_vars> > auth.txt
 
+#descargar MySQL APT Repo https://dev.mysql.com/downloads/file/?id=509020/
+#pasarlo a la MV
+echo "instalar el repo"
+sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
+
+echo "actualizar el repo"
+sudo apt-get update
+
+echo "instalar mysql-shell"
+sudo apt-get install mysql-shell
+
+#ingresar a mysql-shell "mysqlsh"
 echo "connect into mysql"
 mysql -u Italo_Silva -p 1234567890 -h https://api.eu-gb.databases.cloud.ibm.com/v5/ibm -P 6830
 
