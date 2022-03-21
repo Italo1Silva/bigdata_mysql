@@ -10,9 +10,9 @@ echo "install datamaker"
 npm install -g datamaker
 
 echo "install mysql-server" 
-apt-get -y install mysql-server-5.7
+apt-get -y install mysql-server
 
-echo "install stunnel to allow an https connection via redis cli"
+echo "install stunnel to allow an https connection"
 apt-get install stunnel
 
 echo "move the stunnel config to the right place"
@@ -30,6 +30,12 @@ cat template.txt | datamaker -i 350000000 > batch.txt
 echo "Create the auth token to access mysql"
 echo auth admin <mysql_password_from_terraform_tf_vars> > auth.txt
 
-echo "Pipe the data into redis"
-cat auth.txt batch.txt | mysql -p=6830 --pipe
+echo "connect into mysql"
+mysql -u Italo_Silva -p 1234567890 -h https://api.eu-gb.databases.cloud.ibm.com/v5/ibm -P 6830
 
+echo "Pipe the data into mysql"
+LOAD DATA INFILE '/root/batch.txt' 
+INTO TABLE Test
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+TERMINATED BY '\r\n';
