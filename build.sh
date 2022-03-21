@@ -9,8 +9,8 @@ apt-get -y install nodejs
 echo "install datamaker"
 npm install -g datamaker
 
-echo "install redis-server" 
-apt-get -y install mysql-server
+echo "install mysql-server" 
+apt-get -y install mysql-server-5.7
 
 echo "install stunnel to allow an https connection via redis cli"
 apt-get install stunnel
@@ -27,7 +27,7 @@ echo "SET {{uuid}} '{\"a\":{{integer}},\"txt\":\"{{words 10}}\",\"email\":\"{{em
 echo "Create the data. This will take a while because it is creating 350 million rows!"
 cat template.txt | datamaker -i 350000000 > batch.txt
 
-echo "Create the auth token to access redis"
+echo "Create the auth token to access mysql"
 echo auth admin <mysql_password_from_terraform_tf_vars> > auth.txt
 
 echo "Pipe the data into redis"
