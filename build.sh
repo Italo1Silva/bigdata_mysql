@@ -19,16 +19,9 @@ sudo apt-get update
 
 echo "instalar mysql-shell"
 sudo apt-get install mysql-shell
-#descargar MySQL APT Repo https://dev.mysql.com/downloads/file/?id=509020/
-#pasarlo a la MV
-echo "instalar el repo"
-sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
 
-echo "actualizar el repo"
-sudo apt-get update
-
-echo "instalar mysql-shell"
-sudo apt-get install mysql-shell
+echo "instalar mysql-server"
+sudo apt install mysql-server
 #--------------------------------------------------------------------------
 
 echo "install stunnel to allow an https connection"
