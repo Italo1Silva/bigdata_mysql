@@ -41,7 +41,7 @@ echo "Starting stunnel..."
 stunnel
 
 echo "Create the data template"
-echo "INSERT INTO products VALUES ('{{autoinc}}','{{words 5}}', {{price}}, '{{address}}', {{boolean 0.5}});" > template.txt
+echo "SET {{uuid}} '{\"a\":{{integer}},\"txt\":\"{{words 10}}\",\"email\":\"{{email}}\"}'" > template.txt
 
 echo "Create the data. This will take a while because it is creating 350 million rows!"
 cat template.txt | datamaker -i 350000000 > batch.txt
