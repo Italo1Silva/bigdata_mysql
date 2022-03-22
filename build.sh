@@ -30,20 +30,3 @@ cat template.txt | datamaker -i 3500 > batch.txt #Manejar la cantidad de datos a
 #Cambiar las variables "h", "P"
 echo "connect into mysql"
 mysql -u admin -p -h <host_output_del_paso_4> -P <port_output_del_paso_4>
-
-##Esto ya es manual
-#Crear la BD
-CREATE DATABASE Test;
-
-#Usar la BD
-USE Test;
-
-#Crear la tabla
-CREATE TABLE Test (a int, txt varchar(255), email varchar(255));
-
-#ingestar los datos
-LOAD DATA INFILE '/root/batch.txt' 
-INTO TABLE Test
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-TERMINATED BY '\r\n';
