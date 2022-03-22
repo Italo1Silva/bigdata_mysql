@@ -38,7 +38,7 @@ CREATE DATABASE Test;
 USE Test;
 
 #Crear la tabla
-CREATE TABLE Test (ID int,Last varchar(255)); #Según las columnas necesarias
+CREATE TABLE Test (<ingresar_el_número_de_columnas_del_tenplate>); #Según las columnas necesarias
 
 #ingestar los datos
 LOAD DATA INFILE '/root/batch.txt' 
