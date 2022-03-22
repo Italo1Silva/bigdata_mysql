@@ -25,12 +25,11 @@ echo "Create the data template"
 echo "SET {{uuid}} '{\"a\":{{integer}},\"txt\":\"{{words 10}}\",\"email\":\"{{email}}\"}'" > template.txt
 
 echo "Create the data. This will take a while because it is creating 350 million rows!"
-cat template.txt | datamaker -i 3500 > batch.txt
+cat template.txt | datamaker -i 3500 > batch.txt #Manejar la cantidad de datos a crear
 
-#ingresar a mysql-shell "mysqlsh"
 #Cambiar las variables "h", "P"
 echo "connect into mysql"
-mysql -u admin -p -h 64d65c2c-9db2-4a8b-b107-897cb2425b83.c1vt02ul0q3fa0509bog.databases.appdomain.cloud -P 31708
+mysql -u admin -p -h <host_output_del_paso_4> -P <port_output_del_paso_4>
 
 #Crear la BD
 CREATE DATABASE Test;
@@ -39,7 +38,7 @@ CREATE DATABASE Test;
 USE Test;
 
 #Crear la tabla
-REATE TABLE Test (ID int,Last varchar(255)); #Según las columnas necesarias
+CREATE TABLE Test (ID int,Last varchar(255)); #Según las columnas necesarias
 
 #ingestar los datos
 LOAD DATA INFILE '/root/batch.txt' 
