@@ -31,6 +31,7 @@ cat template.txt | datamaker -i 3500 > batch.txt #Manejar la cantidad de datos a
 echo "connect into mysql"
 mysql -u admin -p -h <host_output_del_paso_4> -P <port_output_del_paso_4>
 
+##Esto ya es manual
 #Crear la BD
 CREATE DATABASE Test;
 
