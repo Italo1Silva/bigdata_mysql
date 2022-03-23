@@ -10,7 +10,7 @@ echo "install datamaker"
 npm install -g datamaker
 
 echo "creando data"
-echo "{{uuid}},{{integer}},{{firstname}} {{surname}},{{words 10}},{{email}}" | datamaker --format csv --iterations 500
+echo "{{uuid}},{{integer}},{{firstname}} {{surname}},{{words 10}},{{email}}" | datamaker --format csv --iterations 500 > batch.csv
 
 #descargar el archivo .deb "https://dev.mysql.com/downloads/repo/apt/"
 echo "instalando repositorio"
