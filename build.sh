@@ -29,4 +29,4 @@ cat template.txt | datamaker -i 3500 > batch.txt #Manejar la cantidad de datos a
 
 #Cambiar las variables "h", "P"
 echo "connect into mysql"
-mysql -u admin -p -h <host_output_del_paso_4> -P <port_output_del_paso_4>
+mysql -u <user_de_la_credencial_de_acceso> -p -h <host_output_del_paso_4> -P <port_output_del_paso_4>
