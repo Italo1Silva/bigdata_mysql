@@ -9,16 +9,6 @@ apt-get -y install nodejs
 echo "install datamaker"
 npm install -g datamaker
 
-#descargar MySQL APT Repo https://dev.mysql.com/downloads/file/?id=509020/
-#pasarlo a la MV
-echo "instalar el repo"
-sudo dpkg -i mysql-apt-config_0.8.22-1_all.deb
-
-echo "actualizar el repo"
-sudo apt-get update
-
-echo "instalar mysql-server"
-sudo apt install mysql-server
 #--------------------------------------------------------------------------
 
 echo "Create the data template"
@@ -27,6 +17,14 @@ echo "SET {{uuid}} '{\"a\":{{integer}},\"txt\":\"{{words 10}}\",\"email\":\"{{em
 echo "Create the data. This will take a while because it is creating 350 million rows!"
 cat template.txt | datamaker -i 3500 > batch.txt #Manejar la cantidad de datos a crear
 
-#Cambiar las variables "h", "P"
-echo "connect into mysql"
-mysql -u <user_de_la_credencial_de_acceso> -p -h <host_output_del_paso_4> -P <port_output_del_paso_4>
+echo "instalando ibmcloud cli"
+curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+
+echo "instalando cloud-databases plugin"
+ibmcloud plugin install cloud-databases
+
+echo "conectandose a su cuenta IBM Cloud"
+ibmcloud login --apikey <key>
+
+echo "conectandose a su base de datos"
+ibmcloud cdb cxn -s <your_mysql_crn>
