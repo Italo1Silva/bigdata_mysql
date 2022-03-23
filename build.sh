@@ -9,6 +9,7 @@ apt-get -y install nodejs
 echo "install datamaker"
 npm install -g datamaker
 
+#Solo modifica el número de iteraciones si quieres más filas
 echo "creando data"
 echo "{{uuid}},{{integer}},{{firstname}} {{surname}},{{words 10}},{{email}}" | datamaker --format csv --iterations 500 > batch.csv
 
@@ -22,15 +23,5 @@ apt-get update
 echo "instalar mysql-server"
 apt-get install mysql-server
 
-echo "instalando ibmcloud cli"
-#curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-
-echo "instalando cloud-databases plugin"
-#ibmcloud plugin install cloud-databases
-
-echo "conectandose a su cuenta IBM Cloud"
-#ibmcloud login --apikey <key>
-
-echo "conectandose a su base de datos"
-#ibmcloud cdb cxn -s <your_mysql_crn>
+echo "conectandose al mysql"
 mysql --local-infile=1 -u admin -p -h <your_mysql_host> -P <your_mysql_port>
