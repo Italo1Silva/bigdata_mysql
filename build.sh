@@ -9,13 +9,8 @@ apt-get -y install nodejs
 echo "install datamaker"
 npm install -g datamaker
 
-#--------------------------------------------------------------------------
-
-echo "Create the data template"
-echo "SET {{uuid}} '{\"a\":{{integer}},\"txt\":\"{{words 10}}\",\"email\":\"{{email}}\"}'" > template.txt
-
-echo "Create the data. This will take a while because it is creating 350 million rows!"
-cat template.txt | datamaker -i 3500 > batch.txt #Manejar la cantidad de datos a crear
+echo "creando data"
+echo "{{uuid}},{{integer}},{{firstname}} {{surname}},{{words 10}},{{email}}" | datamaker --format csv --iterations 500
 
 echo "instalando ibmcloud cli"
 curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
